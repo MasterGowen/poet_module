@@ -1,8 +1,14 @@
+from abc import ABC, abstractmethod
 import logging
 
 logger = logging.getLogger(__name__)
 
-class PoemNotifier:
+class BaseNotifier(ABC):
+    @abstractmethod
+    def notify(self, poem_data: dict):
+        pass
+
+class PoemNotifier(BaseNotifier):
     def notify(self, poem_data: dict):
         """
         Sends notification. Currently a stub for Telegram.
